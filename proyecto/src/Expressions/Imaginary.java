@@ -1,15 +1,25 @@
 package Expressions;
 
-public class Imaginary {
+public class Imaginary implements Expression{
 
-    public double realPart;
-    public double imaginaryPart;
+    public double realPart = 1;
+    public double imaginaryPart = 1;
 
-    public Imaginary(){};
+    //Constructores
 
-    public Imaginary(double, double){};
+    public Imaginary(){
 
-    public Imaginary(String){};
+    }
+
+    public Imaginary(double real, double imaginary){
+
+    }
+
+    public Imaginary(String number){
+
+    }
+
+    // GETTERS AND SETTERS
 
     public double getImaginaryPart() {
         return imaginaryPart;
@@ -27,14 +37,33 @@ public class Imaginary {
         this.realPart = realPart;
     }
 
-    public set(double, double){};
+    public void set(double real, double imaginary){
 
-    public set(String){};
+    }
 
-    public Imaginary sum(Imaginary){};
-    public Imaginary subtract(Imaginary){};
-    public Imaginary multiply(Imaginary){};
-    public Imaginary divide(Imaginary){};
+    public void set(String number){
+
+    }
+
+    //OPERATIONS
+
+    public Imaginary sum(Expression n){
+        return null;
+    }
+
+    public Imaginary subtract(Expression n){
+        return null;
+    }
+
+    public Imaginary multiply(Expression n){
+        return null;
+    }
+
+    public Imaginary divide(Expression n){
+        return null;
+    }
+
+    //GENERALS
 
     @Override
     public String toString() {
@@ -42,8 +71,8 @@ public class Imaginary {
     }
 
     @Override
-    protected Object clone() throws CloneNotSupportedException {
-        return super.clone();
+    public Imaginary clone() {
+        return null;
     }
 
     @Override

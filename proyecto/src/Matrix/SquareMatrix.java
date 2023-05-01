@@ -6,10 +6,10 @@ public class SquareMatrix extends Matrix {
 
     public SquareMatrix(){
 
-    };
+    }
 
-    public SquareMatrix(int){
+    public SquareMatrix(int size){
 
-    };
+    }
 
 }

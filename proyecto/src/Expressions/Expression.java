@@ -2,15 +2,16 @@ package Expressions;
 
 public abstract interface Expression {
 
-    int sum();
-    int subtract();
-    int multiply();
-    int divide();
+    Expression sum(Expression e);
+    Expression subtract(Expression e);
+    Expression multiply(Expression e);
+    Expression divide(Expression e);
 
     @Override
     String toString();
 
     Expression clone();
 
-    boolean equals();
+    @Override
+    boolean equals(Object o);
 }

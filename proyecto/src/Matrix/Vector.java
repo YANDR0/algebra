@@ -6,8 +6,8 @@ public class Vector {
 
     };
 
-    public Vector(int){
-        return 0;
-    };
+    public Vector(int rows){
+
+    }
 
 }
