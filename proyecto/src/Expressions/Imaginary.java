@@ -2,22 +2,20 @@ package Expressions;
 
 public class Imaginary implements Expression{
 
-    public double realPart = 1;
-    public double imaginaryPart = 1;
+    public double realPart = 0;
+    public double imaginaryPart = 0;
 
     //Constructores
 
-    public Imaginary(){
-
-    }
+    public Imaginary(){}
 
     public Imaginary(double real, double imaginary){
-
+        this.realPart = real;
+        this.imaginaryPart = imaginary;
     }
 
-    public Imaginary(String number){
-
-    }
+    // LUEGO
+    //public Imaginary(String number){}
 
     // GETTERS AND SETTERS
 
@@ -38,12 +36,12 @@ public class Imaginary implements Expression{
     }
 
     public void set(double real, double imaginary){
-
+        this.setRealPart(real);
+        this.setImaginaryPart(imaginary);
     }
 
-    public void set(String number){
-
-    }
+    //LUEGO
+    //public void set(String number){}
 
     //OPERATIONS
 
@@ -79,4 +77,8 @@ public class Imaginary implements Expression{
     public boolean equals(Object obj) {
         return super.equals(obj);
     }
+
+    // LUEGO
+    //private static float[] fromString(String s){}
+
 }
