@@ -15,6 +15,7 @@ public class Vector extends Matrix {
     //public Vector dot(Vector v){}
     //public Vector cross(Vector v){}
     //public double norm(){}
+    //public boolean set(int double){}
 
 
     //ESTO A LO MEJOR ES EXCLUSIVO DE 2D y 3D
