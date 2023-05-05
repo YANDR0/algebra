@@ -12,5 +12,8 @@ public class SquareMatrix extends Matrix {
     }
 
     //public Imaginary determinant(){}
+    //public SquareMatrix pow(double exponent){}
+    //public SquareMatrix inverse(){}
+    //public static SquareMatrix parseSquare() {}
 
 }

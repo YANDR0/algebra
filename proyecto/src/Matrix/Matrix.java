@@ -55,17 +55,11 @@ public class Matrix{
     //public Matrix gauss(){}
     //public Matrix gaussJordan(){}
     //public Matrix transpose(){}
-    //public Matrix inverse(){}
-    //public Matrix pow(double exponent){}
 
     //public Matrix fill(Imaginary... numbers){}
-
     //public Matrix escalar(Imaginary number){}
-
     //public Matriz identity(double size){}
-
     //Algo de tamaños tras operaciones
-    //
 
 
     @Override

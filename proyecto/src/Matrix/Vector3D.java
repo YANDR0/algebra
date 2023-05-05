@@ -8,4 +8,6 @@ public class Vector3D extends Vector{
         super(D_LENGHT2);
     }
 
+    //public static Vector3D parse3D() {}
+
 }
