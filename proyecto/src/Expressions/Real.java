@@ -18,5 +18,11 @@ public class Real extends Imaginary{
         return this.realPart;
     }
 
-    //public Real[] toReal(double... numbers){}
+    public Real[] toReal(double... numbers){
+        Real []reals = new Real[numbers.length];
+        for (int i = 0; i < numbers.length; i++){
+            reals[i] = new Real(numbers[i]);
+        }
+        return reals;
+    }
 }
