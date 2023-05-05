@@ -77,7 +77,7 @@ public class Imaginary implements Expression{
         Imaginary i = (Imaginary) n;
         Imaginary num = new Imaginary();
         num.realPart = (this.realPart *  i.realPart) - (this.imaginaryPart * i.imaginaryPart);
-        num.imaginaryPart = (this.realPart + i.imaginaryPart) + (this.imaginaryPart + i.realPart);
+        num.imaginaryPart = (this.realPart * i.imaginaryPart) + (this.imaginaryPart * i.realPart);
 
         return num;
     }
@@ -89,7 +89,7 @@ public class Imaginary implements Expression{
         if(i.realPart == 0 && i.imaginaryPart == 0) return null;
 
         Imaginary number = this.multiply(i.conjugated());
-        double den = (i.realPart * i.realPart) - (i.imaginaryPart * i.imaginaryPart);
+        double den = (i.realPart * i.realPart) + (i.imaginaryPart * i.imaginaryPart);
         number.realPart = number.realPart / den;
         number.imaginaryPart = number.imaginaryPart/ den;
 
@@ -113,7 +113,9 @@ public class Imaginary implements Expression{
 
     @Override
     public String toString() {
-        return String.format("%.2g + %.2gi", this.realPart, this.imaginaryPart);
+        if (this.imaginaryPart < 0)  return String.format("%.2g%.2gi", this.realPart, this.imaginaryPart);
+
+        return String.format("%.2g+%.2gi", this.realPart, this.imaginaryPart);
     }
 
     @Override
@@ -130,8 +132,8 @@ public class Imaginary implements Expression{
     }
 
     // LUEGO
-    private static Imaginary fromString(String s){
-        s = s.replace(" ", "").replace("-","*-").replace("+","*+");
+    public static Imaginary fromString(String s){
+        s = s.replace(" ", "").replace("-","*-").replace("+","*+").replace("i","");
         String[] split = s.split("\\*");
         try {
             return new Imaginary(Double.parseDouble(split[0]),Double.parseDouble(split[1]));
