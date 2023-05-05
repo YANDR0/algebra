@@ -1,11 +1,11 @@
 package Matrix;
 
-import Expressions.Expression;
-import Expressions.Real;
+import Expressions.*;
+
 
 public class Matrix{
 
-    private Expression[][] matrix;
+    private final Imaginary[][] matrix;
     private final int rows;
     private final int cols;
 
@@ -24,8 +24,7 @@ public class Matrix{
     public Matrix(int rows, int cols){
         this.rows = Math.max(MIN_SIZE, rows);
         this.cols = Math.max(MIN_SIZE, cols);
-        this.matrix = new Expression[this.rows][this.cols];
-
+        this.matrix = new Imaginary[this.rows][this.cols];
     }
 
     // GETTERS AND SETTERS
@@ -42,29 +41,52 @@ public class Matrix{
         return this.matrix[rows][cols];
     }
 
-    public int set(int rows, int cols, Expression number){
+    public int set(int rows, int cols, Imaginary number){
         if(rows < 0 || rows >= this.rows || cols < 0 || cols >= this.cols) return 1;
         this.matrix[rows][cols] = number;
         return 0;
     }
 
-    public int set(int rows, int cols, double number){
-        return set(rows, cols, new Real(number));
-    }
+    // OPERATIONS
+
+    //public Matrix sum(Matrix m){}
+    //public Matrix subtract(Matrix m){}
+    //public Matrix multiply(Matrix m){}
+    //public Matrix gauss(){}
+    //public Matrix gaussJordan(){}
+    //public Matrix transpose(){}
+    //public Matrix inverse(){}
+    //public Matrix pow(double exponent){}
+
+    //public Matrix fill(Imaginary... numbers){}
+
+    //public Matrix escalar(Imaginary number){}
+
+    //public Matriz identity(double size){}
+
+    //Algo de tamaños tras operaciones
+    //
 
 
-    // QUE HUEVA, LUEGO VEO
     @Override
     public String toString() {
-        return super.toString();
+        String s = "";
+        for(Expression[] curr: this.matrix){
+            for (Expression e : curr)
+                s += e != null? e.toString() + "  " : "0  ";
+            s += "\n";
+        }
+        return s;
     }
-
+    /*
     @Override
-    protected Object clone() throws CloneNotSupportedException {
+    public Object clone() throws CloneNotSupportedException {
         return super.clone();
-    }
+    }*/
+
+    /*
     @Override
     public boolean equals(Object obj) {
         return super.equals(obj);
-    }
+    }*/
 }

@@ -17,4 +17,6 @@ public class Real extends Imaginary{
     public double toNumber(){
         return this.realPart;
     }
+
+    //public Real[] toReal(double... numbers){}
 }

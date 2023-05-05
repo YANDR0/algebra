@@ -1,13 +1,24 @@
 package Matrix;
 
-public class Vector {
+public class Vector extends Matrix {
 
     public Vector(){
-
-    };
-
-    public Vector(int rows){
+        super(1, DEFAULT_SIZE);
 
     }
+
+    public Vector(int rows){
+        super(1, rows);
+
+    }
+
+    //public Vector dot(Vector v){}
+    //public Vector cross(Vector v){}
+    //public double norm(){}
+
+
+    //ESTO A LO MEJOR ES EXCLUSIVO DE 2D y 3D
+    //public Imaginary distance(Vector v){}
+    //public Imaginary angle(Vector v){}
 
 }

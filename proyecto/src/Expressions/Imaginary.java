@@ -1,7 +1,5 @@
 package Expressions;
 
-import java.security.DrbgParameters;
-
 public class Imaginary implements Expression{
 
     public double realPart = 0;
@@ -84,6 +82,8 @@ public class Imaginary implements Expression{
         if(!(n instanceof Imaginary)) return null;
 
         Imaginary i = (Imaginary) n;
+        if(i.realPart == 0 && i.imaginaryPart == 0) return null;
+
         Imaginary number = this.multiply(i.conjugated());
         double den = (i.realPart * i.realPart) - (i.imaginaryPart * i.imaginaryPart);
         number.realPart = number.realPart / den;
@@ -100,7 +100,7 @@ public class Imaginary implements Expression{
 
     @Override
     public String toString() {
-        return String.format("%f + %fi", this.realPart, this.imaginaryPart);
+        return String.format("%.2g + %.2gi", this.realPart, this.imaginaryPart);
     }
 
     @Override
@@ -118,5 +118,13 @@ public class Imaginary implements Expression{
 
     // LUEGO
     //private static float[] fromString(String s){}
+
+    //public String toPolar(){}
+    //public String toExponential(){}
+    //public Real[] toImaginary(double... numbers){}
+    //public double module(){}
+    //public static noséXD roots(double number, double root){}
+    //public imaginary power(){}
+
 
 }
