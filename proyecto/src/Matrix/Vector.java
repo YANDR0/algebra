@@ -44,7 +44,7 @@ public class Vector extends Matrix {
         for(int i = 0; i < this.size; i++){
             total = total.sum(this.get(i).multiply(v.get(i)));
         }
-        return  total;
+        return total;
     }
 
     //public Vector cross(Vector v){}

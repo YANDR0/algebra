@@ -76,12 +76,29 @@ public class Matrix{
     }
 
     //Es mucho, luego veo XD ------------------------------------------------------------
-    /*
     public Matrix multiply(Matrix m){
         if(!canMultiply(m)) return null;
 
         Matrix result = new Matrix(this.rows, m.cols);
-    }*/
+        Matrix temporal = transpose(m);
+
+        for(int i = 0; i < this.rows; i++){
+            for(int j = 0; j < this.cols; j++){
+                result.set(i, j, (Imaginary)(this.get(i,j).multiply(m.get(i,j))));
+            }
+        }
+        return result;
+    }
+
+    public Matrix transpose(Matrix m){
+        Matrix result = new Matrix(this.cols, this.rows);
+
+        for (int i = 0; i < m.rows; i++)
+            for (int j = 0; j < m.cols; j++)
+                result.set(j,i, (Imaginary) (this.get(i,j)));
+
+        return result;
+    }
 
     public Matrix transpose(){
         Matrix result = new Matrix(this.cols, this.rows);
@@ -114,7 +131,10 @@ public class Matrix{
     }
 
     public boolean canMultiply(Matrix m){
-        return (this.cols == m.rows);
+        if(m.rows == this.cols && m.cols == this.rows ){
+            return true;
+        }
+        return false;
     }
 
     //public Matrix fill(Imaginary... numbers){}
