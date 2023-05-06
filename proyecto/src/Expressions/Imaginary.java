@@ -1,8 +1,5 @@
+
 package Expressions;
-
-import com.sun.source.tree.ReturnTree;
-
-import java.text.BreakIterator;
 
 public class Imaginary implements Expression{
 
@@ -18,8 +15,14 @@ public class Imaginary implements Expression{
         this.imaginaryPart = imaginary;
     }
 
-    // LUEGO
-    //public Imaginary(String number){}
+    public Imaginary(String number){
+        Imaginary i = Imaginary.fromString(number);
+        if(i != null){
+            this.realPart = i.realPart;
+            this.imaginaryPart = i.imaginaryPart;
+        }
+
+    }
 
     // GETTERS AND SETTERS
 
@@ -44,8 +47,6 @@ public class Imaginary implements Expression{
         this.setImaginaryPart(imaginary);
     }
 
-    //LUEGO
-    //public void set(String number){}
 
     //OPERATIONS
 
@@ -95,6 +96,7 @@ public class Imaginary implements Expression{
 
         return number;
     }
+
     public Imaginary power(int e){
         if (e < 0) return null;
         if (e == 0) return new Imaginary(1,0);
@@ -131,7 +133,7 @@ public class Imaginary implements Expression{
         return (this.realPart == i.realPart && this.imaginaryPart == i.imaginaryPart);
     }
 
-    // LUEGO
+    // Otros
     public static Imaginary fromString(String s){
         s = s.replace(" ", "").replace("-","*-").replace("+","*+").replace("i","");
         String[] split = s.split("\\*");
@@ -147,18 +149,22 @@ public class Imaginary implements Expression{
         double angle = this.angle();
         return String.format("%f(cos(%f) + isin(%f))",r,angle,angle);
     }
+
     public String toExponential(){
         double r = this.module();
         double angle = this.angle();
         return String.format("%fe^%fi",r,angle);
     }
+
     public double module(){
         return (Math.sqrt(Math.pow(this.imaginaryPart,2)+Math.pow(this.realPart,2)));
     }
+
     public double angle(){
         return this.realPart > 0 ? Math.atan(this.imaginaryPart/this.realPart) :
                 Math.atan(this.imaginaryPart/this.realPart) + Math.PI;
     }
+
     public Imaginary[] toImaginary(String... numbers){
         Imaginary []imaginary = new Imaginary[numbers.length];
         for (int i = 0; i < numbers.length; i++){
@@ -166,5 +172,6 @@ public class Imaginary implements Expression{
         }
         return imaginary;
     }
+
     //public static noséXD roots(double number, double root){}
 }

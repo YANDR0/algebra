@@ -4,11 +4,23 @@ import Expressions.Imaginary;
 
 public class SquareMatrix extends Matrix {
 
-    public SquareMatrix(){
-    }
+    public SquareMatrix(){}
 
     public SquareMatrix(int size){
         super(size);
+    }
+
+    public Matrix identity(int size){
+        Matrix m = new Matrix(size);
+
+        for(int i = 0; i < size; i++){
+            for(int j = 0; j < size; j++){
+                Imaginary complex = i == j? new Imaginary(1, 0) : new Imaginary();
+                m.set(i, j, complex);
+            }
+        }
+
+        return m;
     }
 
     //public Imaginary determinant(){}
