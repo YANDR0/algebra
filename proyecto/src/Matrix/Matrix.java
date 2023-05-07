@@ -106,15 +106,16 @@ public class Matrix{
     public Matrix escalar(Imaginary number){
 
         Matrix m = new Matrix(this.rows, this.cols);
-
         for(int i = 0; i < this.rows; i++){
             for(int j = 0; j < this.cols; j++){
                 m.set(i,j, (Imaginary)(this.get(i,j).multiply(number)));
             }
         }
-
         return m;
     }
+
+    //public Matrix gauss(){}
+    //public Matrix gaussJordan(){}
 
 
     //FUNCTIONALITY
@@ -127,12 +128,25 @@ public class Matrix{
         return (this.cols == m.rows);
     }
 
-    //public Matrix fill(Imaginary... numbers){}
-    //Algo de tamaños tras operaciones
+    public void fill(Imaginary... numbers){
+        for (int i = 0; i < this.rows; i++) {
+            for (int j = 0; j < this.cols; j++) {
+                if(i * j + j >= numbers.length)
+                    return;
+                this.set(i,j, numbers[i*j+j]);
+            }
+        }
+    }
 
-    //public Matrix gauss(){}
-    //public Matrix gaussJordan(){}
-
+    public Imaginary[] toArray(){
+        Imaginary[] result = new Imaginary[(this.rows) * (this.cols)];
+        for (int i = 0; i < this.rows; i++) {
+            for (int j = 0; j < this.cols; j++) {
+                result[i*j+j] = (Imaginary) this.get(i,j);
+            }
+        }
+        return result;
+    }
 
     @Override
     public String toString() {
@@ -145,11 +159,15 @@ public class Matrix{
         return s;
     }
 
-    /*
     @Override
     public Object clone() throws CloneNotSupportedException {
+        Matrix clone = new Matrix(this.rows, this.cols);
+        
+        for(int i = 0; i < this.rows; i++)
+            for (int j = 0; j < this.cols; j++)
+                clone.set(i,j,(Imaginary) this.get(i,j));
         return super.clone();
-    }*/
+    }
 
     @Override
     public boolean equals(Object obj) {

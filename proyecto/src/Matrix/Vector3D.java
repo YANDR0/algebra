@@ -8,6 +8,12 @@ public class Vector3D extends Vector{
         super(D_LENGHT2);
     }
 
-    //public static Vector3D parse3D() {}
+    public static Vector3D parse3D(Matrix m) {
+        Vector3D v3 = new Vector3D();
+        v3.fill(m.toArray());
+        return v3;
+    }
+
+    //public Vector cross(Vector v){}
 
 }

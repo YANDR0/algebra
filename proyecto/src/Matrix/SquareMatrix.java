@@ -10,6 +10,14 @@ public class SquareMatrix extends Matrix {
         super(size);
     }
 
+    public SquareMatrix pow(double exponent) {
+        SquareMatrix result = new SquareMatrix(this.rows);
+        for (int i = 0; i < exponent; i++)
+            result = (SquareMatrix)(result.multiply(this));
+
+        return result;
+    }
+
     public Matrix identity(int size){
         Matrix m = new Matrix(size);
 
@@ -23,15 +31,8 @@ public class SquareMatrix extends Matrix {
         return m;
     }
 
+
     //public Imaginary determinant(){}
-
-    public SquareMatrix pow(double exponent) {
-        SquareMatrix result = new SquareMatrix(this.rows);
-        for (int i = 0; i < exponent; i++)
-            result = (SquareMatrix)(result.multiply(this));
-
-        return result;
-    }
 
     //public SquareMatrix inverse(){}
     //public static SquareMatrix parseSquare() {}

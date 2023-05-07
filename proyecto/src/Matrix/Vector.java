@@ -28,6 +28,7 @@ public class Vector extends Matrix {
         super.set(0, index, number);
     }
 
+
     //OPERATIONS
 
     public Imaginary norm(){
@@ -46,8 +47,6 @@ public class Vector extends Matrix {
         }
         return total;
     }
-
-    //public Vector cross(Vector v){}
 
 
     //ESTO A LO MEJOR ES EXCLUSIVO DE 2D y 3D
