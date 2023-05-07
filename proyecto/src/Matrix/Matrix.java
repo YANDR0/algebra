@@ -54,7 +54,7 @@ public class Matrix{
     public Matrix sum(Matrix m){
         if(!this.canSum(m)) return null;
 
-        Matrix result= new Matrix(this.rows, this.cols);
+        Matrix result = new Matrix(this.rows, this.cols);
 
         for(int i = 0; i < this.rows; i++)
             for(int j = 0; j < this.cols; j++)
@@ -75,28 +75,21 @@ public class Matrix{
         return result;
     }
 
-    //Es mucho, luego veo XD ------------------------------------------------------------
     public Matrix multiply(Matrix m){
-        if(!canMultiply(m)) return null;
+        if(!this.canMultiply(m)) return null;
 
         Matrix result = new Matrix(this.rows, m.cols);
-        Matrix temporal = transpose(m);
+        Imaginary cell = new Imaginary();
 
-        for(int i = 0; i < this.rows; i++){
-            for(int j = 0; j < this.cols; j++){
-                result.set(i, j, (Imaginary)(this.get(i,j).multiply(m.get(i,j))));
+        for(int r1 = 0; r1 < this.rows; r1++){
+            for(int c2 = 0; c2 < m.cols; c2++){
+                cell.set(0,0);
+                for (int i = 0; i < this.cols; i++)
+                    cell = cell.sum(this.get(r1, i).multiply(m.get(i,c2)));
+
+                result.set(r1, c2, cell);
             }
         }
-        return result;
-    }
-
-    public Matrix transpose(Matrix m){
-        Matrix result = new Matrix(this.cols, this.rows);
-
-        for (int i = 0; i < m.rows; i++)
-            for (int j = 0; j < m.cols; j++)
-                result.set(j,i, (Imaginary) (this.get(i,j)));
-
         return result;
     }
 
@@ -131,10 +124,7 @@ public class Matrix{
     }
 
     public boolean canMultiply(Matrix m){
-        if(m.rows == this.cols && m.cols == this.rows ){
-            return true;
-        }
-        return false;
+        return (this.cols == m.rows);
     }
 
     //public Matrix fill(Imaginary... numbers){}

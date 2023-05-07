@@ -25,16 +25,11 @@ public class SquareMatrix extends Matrix {
 
     //public Imaginary determinant(){}
 
-    public SquareMatrix pow(double exponent){
-        SquareMatrix result = new SquareMatrix(Integer.parseInt(this.getSize()));
-        double valor = 0;
-        for(int i = 0; i < this.rows; i++){
-            for(int j = 0; j < this.cols; j++){
-               for(int k = 0; k < exponent; k++){
-                   valor = j * j;
-               }
-            }
-        }
+    public SquareMatrix pow(double exponent) {
+        SquareMatrix result = new SquareMatrix(this.rows);
+        for (int i = 0; i < exponent; i++)
+            result = (SquareMatrix)(result.multiply(this));
+
         return result;
     }
 
