@@ -117,19 +117,21 @@ public class Matrix{
 
     // GAUSS y JORDAN
 
-    private void switchRow(){
+    private void switchRow(int source, int destiny){
+        Imaginary[] s = this.matrix[source].clone();
+        this.matrix[source] = this.matrix[destiny];
+        this.matrix[destiny] = s;
+    }
+
+    private void multiplyRow(int row, Imaginary value){
 
     }
 
-    private void multiplyRow(){
+    private void sumRows(int row, Imaginary value){
 
     }
 
-    private void sumRows(){
-
-    }
-
-    private void substractRows(){
+    private void substractRows(int row, Imaginary value){
 
     }
 
