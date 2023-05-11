@@ -114,8 +114,28 @@ public class Matrix{
         return m;
     }
 
-    //public Matrix gauss(){}
-    //public Matrix gaussJordan(){}
+
+    // GAUSS y JORDAN
+
+    private void switchRow(){
+
+    }
+
+    private void multiplyRow(){
+
+    }
+
+    private void sumRows(){
+
+    }
+
+    private void substractRows(){
+
+    }
+
+    public Matrix gauss(){ return null;}
+    public Matrix gaussJordan(){ return null;}
+
 
 
     //FUNCTIONALITY
@@ -139,9 +159,13 @@ public class Matrix{
     }
 
     public Imaginary[] toArray(){
-        Imaginary[] result = new Imaginary[(this.rows) * (this.cols)];
-        for (int i = 0; i < this.rows; i++) {
-            for (int j = 0; j < this.cols; j++) {
+        return this.toArray(this.rows, this.cols);
+    }
+
+    public Imaginary[] toArray(int rows, int cols){
+        Imaginary[] result = new Imaginary[(rows) * (cols)];
+        for (int i = 0; i < rows; i++) {
+            for (int j = 0; j < cols; j++) {
                 result[i*j+j] = (Imaginary) this.get(i,j);
             }
         }
