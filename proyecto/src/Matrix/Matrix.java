@@ -77,19 +77,17 @@ public class Matrix{
 
     public Matrix multiply(Matrix m){
         if(!this.canMultiply(m)) return null;
-
         Matrix result = new Matrix(this.rows, m.cols);
-        Imaginary cell = new Imaginary();
 
-        for(int r1 = 0; r1 < this.rows; r1++){
+        for(int r1 = 0; r1 < this.rows; r1++)
             for(int c2 = 0; c2 < m.cols; c2++){
-                cell.set(0,0);
+                Imaginary cell = new Imaginary();
                 for (int i = 0; i < this.cols; i++)
                     cell = cell.sum(this.get(r1, i).multiply(m.get(i,c2)));
 
                 result.set(r1, c2, cell);
             }
-        }
+
         return result;
     }
 
@@ -211,7 +209,7 @@ public class Matrix{
             for (int j = 0; j < this.cols; j++) {
                 if(i * j + j >= numbers.length)
                     return;
-                this.set(i,j, numbers[i*j+j]);
+                this.set(i,j, numbers[i*this.cols+j]);
             }
         }
     }

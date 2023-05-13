@@ -10,15 +10,15 @@ public class SquareMatrix extends Matrix {
         super(size);
     }
 
-    public SquareMatrix pow(double exponent) {
-        SquareMatrix result = new SquareMatrix(this.rows);
+    public Matrix pow(double exponent) {
+        Matrix result =  this.identity(this.rows);
         for (int i = 0; i < exponent; i++)
-            result = (SquareMatrix)(result.multiply(this));
+            result = (result.multiply(this));
 
         return result;
     }
 
-    public Matrix identity(int size){
+    public static Matrix identity(int size){
         Matrix m = new Matrix(size);
 
         for(int i = 0; i < size; i++){
