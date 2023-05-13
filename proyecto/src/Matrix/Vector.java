@@ -49,9 +49,5 @@ public class Vector extends Matrix {
     }
 
 
-    //ESTO A LO MEJOR ES EXCLUSIVO DE 2D y 3D
-
-    //public Imaginary distance(Vector v){}
-    //public Imaginary angle(Vector v){}
 
 }

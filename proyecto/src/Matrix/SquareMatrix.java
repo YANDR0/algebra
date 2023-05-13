@@ -31,10 +31,14 @@ public class SquareMatrix extends Matrix {
         return m;
     }
 
+    public Imaginary determinant(){
+        Imaginary result = this.matrix[0][0];
 
-    //public Imaginary determinant(){}      -- Usando método de gauss es más sencillo
+        for(int i = 1; i < this.rows; i++)
+            result = result.multiply(get(i,i));
 
-    //public SquareMatrix inverse(){}       -- Tal vez lo dejamos fuera
+        return result;
+    }
 
     public static SquareMatrix parseSquare(Matrix m) {
         int min = Math.min(m.rows, m.cols);

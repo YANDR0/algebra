@@ -123,21 +123,77 @@ public class Matrix{
         this.matrix[destiny] = s;
     }
 
+    private void sumRows(int source, int destiny){
+        for(int i = 0; i < this.cols; i++){
+            matrix[destiny][i] = matrix[source][i].sum(matrix[destiny][i]);
+        }
+    }
+
+    private void subtractRows(int source, int destiny){
+        for(int i = 0; i < this.cols; i++){
+            matrix[destiny][i] = matrix[source][i].subtract(matrix[destiny][i]);
+        }
+    }
+
     private void multiplyRow(int row, Imaginary value){
-
+        for(int i = 0; i < matrix[row].length; i++){
+            matrix[row][i] = matrix[row][i].multiply(value);
+        }
     }
 
-    private void sumRows(int row, Imaginary value){
-
+    private void divideRow(int row, Imaginary value){
+        for(int i = 0; i < matrix[row].length; i++){
+            matrix[row][i] = matrix[row][i].divide(value);
+        }
     }
 
-    private void substractRows(int row, Imaginary value){
+    public Matrix gauss(){
+        int diagonal = Math.min(this.rows, this.cols);
+        Matrix result = this.clone();
+        boolean end;
 
+        for(int i = 0; i < diagonal; i++){
+            end = false;
+            if(result.matrix[i][i].equals(new Imaginary(0,0))){
+                end = true;
+                for (int j = 1; j < this.rows; j++) {
+                    if (!result.matrix[j][i].equals(new Imaginary(0,0))){
+                        result.switchRow(i, j);
+                        end = false;
+                        break;
+                    }
+                }
+                if(end) continue;
+            }
+
+            result.divideRow(i, result.matrix[i][i]);
+            for(int j = i+1; j < this.rows; j++){
+                if(j >= diagonal) break;
+                result.multiplyRow(i, result.matrix[j][i]);
+                result.subtractRows(i, j);
+                result.divideRow(i, result.matrix[i][i]);
+            }
+        }
+
+        return result;
     }
 
-    public Matrix gauss(){ return null;}
-    public Matrix gaussJordan(){ return null;}
+    public Matrix gaussJordan(){
+        int diagonal = Math.min(this.rows, this.cols);
+        Matrix result = this.gauss();
 
+        for(int i = 0; i < diagonal; i++) {
+            result.divideRow(i, result.matrix[i][i]);
+            for(int j = i+1; j < this.rows; j--){
+                if(j <= 0) break;
+                result.multiplyRow(i, result.matrix[j][i]);
+                result.subtractRows(i, j);
+                result.divideRow(i, result.matrix[i][i]);
+            }
+        }
+
+        return result;
+    }
 
 
     //FUNCTIONALITY
@@ -186,13 +242,13 @@ public class Matrix{
     }
 
     @Override
-    public Object clone() throws CloneNotSupportedException {
+    public Matrix clone() {
         Matrix clone = new Matrix(this.rows, this.cols);
         
         for(int i = 0; i < this.rows; i++)
             for (int j = 0; j < this.cols; j++)
                 clone.set(i,j,(Imaginary) this.get(i,j));
-        return super.clone();
+        return clone();
     }
 
     @Override
