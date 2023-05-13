@@ -235,7 +235,7 @@ public class Matrix{
         String s = "";
         for(Expression[] curr: this.matrix){
             for (Expression e : curr)
-                s += e != null? e.toString() + "  " : "0  ";
+                s += e != null? e.toString() + "  " : "-  ";
             s += "\n";
         }
         return s;

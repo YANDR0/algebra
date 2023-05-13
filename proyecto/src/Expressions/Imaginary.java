@@ -1,10 +1,11 @@
 
 package Expressions;
+import java.text.DecimalFormat;
 
 public class Imaginary implements Expression{
 
-    public double realPart = 0;
-    public double imaginaryPart = 0;
+    protected double realPart = 0;
+    protected double imaginaryPart = 0;
 
     //Constructores
 
@@ -99,8 +100,7 @@ public class Imaginary implements Expression{
 
     public Imaginary power(int e){
         if (e < 0) return null;
-        if (e == 0) return new Imaginary(1,0);
-        Imaginary base = this;
+        Imaginary base = new Imaginary(1,0);
         for (int i = 0; i < e; i++){
             base = base.multiply(this);
         }
@@ -115,9 +115,18 @@ public class Imaginary implements Expression{
 
     @Override
     public String toString() {
-        if (this.imaginaryPart < 0)  return String.format("%.2g%.2gi", this.realPart, this.imaginaryPart);
+        DecimalFormat df = new DecimalFormat("0.####");
+        String s = String.format("(%s", df.format(this.realPart));
+        if(this.imaginaryPart == -1)
+            s += "-i";
+        else if(this.imaginaryPart < 0)
+            s += String.format("%si", df.format(this.imaginaryPart));
+        if(this.imaginaryPart == 1)
+            s += "+i";
+        else if(this.imaginaryPart > 0)
+            s += String.format("+%si", df.format(this.imaginaryPart));
 
-        return String.format("%.2g+%.2gi", this.realPart, this.imaginaryPart);
+        return s + ")";
     }
 
     @Override
@@ -137,8 +146,10 @@ public class Imaginary implements Expression{
     public static Imaginary fromString(String s){
         s = s.replace(" ", "").replace("-","*-").replace("+","*+").replace("i","");
         String[] split = s.split("\\*");
+        int min = split[0] == ""? 1:0;
+
         try {
-            return new Imaginary(Double.parseDouble(split[0]),Double.parseDouble(split[1]));
+            return new Imaginary(Double.parseDouble(split[min]),Double.parseDouble(split[min+1]));
         }catch (Exception e){
             return null;
         }
