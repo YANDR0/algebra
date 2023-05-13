@@ -8,7 +8,7 @@ public class Test_1 {
     public static void main(String[] args) {
 
                 // TODO ----- IMAGINARIOS -----  //
-/*
+
         System.out.println("\n\tIMAGINARIOS\n");
 
         //SUMA
@@ -47,9 +47,9 @@ public class Test_1 {
         //EXPONENCIAL
         Imaginary ie1 = new Imaginary(-4,6);
         System.out.println("EXPONENCIAL: \t" + ie1 + "E = "+ ie1.toExponential());
-*/
+
                 // TODO ----- MATRICES -----  //
-/*
+
         System.out.println("\n\tMATRICES");
         Matrix m1 = new Matrix(3,2);
         Real[] numbers1 = Real.toReal(-3, 0,2,5,8,-7);
@@ -67,7 +67,7 @@ public class Test_1 {
         m3.set(1,1,new Real(6));
         m3.set(1,2,new Real(7));
 
-        System.out.println("\nMATRIZ A:\n" + m1 + "\nMATRIZ B:\n" + m2 + "\nMATRIZ C:\n" + m3);
+        System.out.println("\nMATRIZ A:\n" + m1 + "\nMATRIZ B:\n" + m2 + "\nMATRIZ C:\n" + m3 );
 
         //SUMA
         System.out.println("SUMA A+B: \n" + m1.sum(m2));
@@ -79,17 +79,23 @@ public class Test_1 {
         System.out.println("TRANSPUESTA A^T: \n" + m1.transpose());
         //ESCALAR
         System.out.println("ESCALAR 3 * A: \n" + m1.escalar(new Real(3)));
+
+        Matrix mg = new Matrix(4, 5);
+        Real[] numbers3 = Real.toReal(1,-2,2,-3,15,3,4,-1,1,-6,2,-3,2,-1,17,1,1,-3,-2,-7);
+        mg.fill(numbers3);
+
+        System.out.println("\nMATRIZ G:\n" + mg);
         //GAUSS
-        //System.out.println("GAUSS A: \n" + m1.gauss());           //REVISAR APARTE
+        System.out.println("GAUSS G: \n" + mg.gauss());
         //GAUSS JORDAN
-        //System.out.println("GAUSS A: \n" + m1.gaussJordan());     //REVISAR DESPUÉS
-*/
+        System.out.println("JORDAN G: \n" + mg.gaussJordan());
+
                 // TODO ----- MATRIZ CUADRADA -----  //
-        /*
+
         System.out.println("\tMATRICES CUADRADAS\n");
         SquareMatrix mc1 = new SquareMatrix(4);
-        Real[] numbers = Real.toReal(1,1, -1, 1, 2, 5, -3, 3, -1, 5, -2, 3, 2, 11, -4, 4);
-        mc1.fill(numbers);
+        Real[] numbers4 = Real.toReal(1,1, -1, 1, 2, 5, -3, 3, -1, 5, -2, 3, 2, 11, -4, 4);
+        mc1.fill(numbers4);
         System.out.println("MATRIZ CUADRADA A:\n" + mc1);
         //POTENCIA
         System.out.println("POTENCIA A^3: \n" + mc1.pow(3));
@@ -97,7 +103,7 @@ public class Test_1 {
         //System.out.println("DETERMINANTE A: \n" + mi1.determinant());
         //IDENTIDAD
         System.out.println("IDENTIDAD 3x3: \n" + SquareMatrix.identity(3));     //OCUPA A GAUSS
-        */
+
                 // TODO ----- VECTORES -----  //
 
         //PRODUCTO PUNTO

@@ -30,14 +30,14 @@ public class Vector extends Matrix {
 
 
     //OPERATIONS
-
+    /*
     public Imaginary norm(){
         Imaginary total = new Imaginary();
         for(int i = 0; i < this.size; i++)
             total = total.sum(this.get(i).multiply(this.get(i)));
         return total;
     }
-
+    */
     public Imaginary dot(Vector v){
         if(this.size != v.size) return null;
 
