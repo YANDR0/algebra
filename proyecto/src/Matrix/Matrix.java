@@ -96,18 +96,23 @@ public class Matrix{
     }
 
     /**
-     * Declara 
-     * @param rows
-     * @param cols
-     * @param number
+     * Declara un elemento dentro de la matriz
+     * @param rows Posición dentro de las filas
+     * @param cols Posición dentro de las columnas
+     * @param number Elemento que se desea guardar en la posición proporcionada
      */
     public void set(int rows, int cols, Imaginary number){
         if(rows < 0 || rows >= this.rows || cols < 0 || cols >= this.cols) return;
         this.matrix[rows][cols] = number;
     }
 
-    // OPERATIONS
+        // OPERATIONS
 
+    /**
+     * Realiza la suma entre dos matrices del mismo tamaño
+     * @param m Matrix equivalente al segundo sumando
+     * @return Matriz resultado de la operación
+     */
     public Matrix sum(Matrix m){
         if(!this.canSum(m)) return null;
 
@@ -120,6 +125,11 @@ public class Matrix{
         return result;
     }
 
+    /**
+     * Realiza la resta entre dos matrices del mismo tamaño
+     * @param m Matriz equivalente al sustraendo
+     * @return Matriz resultado de la operación
+     */
     public Matrix substract(Matrix m){
         if(!this.canSum(m)) return null;
 
@@ -132,6 +142,11 @@ public class Matrix{
         return result;
     }
 
+    /**
+     * Realiza la multiplicación entre dos matrices compatibles
+     * @param m Matriz equivalente al segundo factor
+     * @return Matriz resultado de la operación
+     */
     public Matrix multiply(Matrix m){
         if(!this.canMultiply(m)) return null;
         Matrix result = new Matrix(this.rows, m.cols);
@@ -148,6 +163,10 @@ public class Matrix{
         return result;
     }
 
+    /**
+     * Transforma una matriz a su forma transpuesta
+     * @return Matriz resultado de la operación
+     */
     public Matrix transpose(){
         Matrix result = new Matrix(this.cols, this.rows);
 
@@ -158,6 +177,11 @@ public class Matrix{
         return result;
     }
 
+    /**
+     * Multiplica todos los elementos de una matriz por un escalar
+     * @param number Factor que multiplica la matriz
+     * @return Matriz resultado de la operación
+     */
     public Matrix escalar(Imaginary number){
 
         Matrix m = new Matrix(this.rows, this.cols);
@@ -170,7 +194,7 @@ public class Matrix{
     }
 
 
-    // GAUSS y JORDAN
+        // GAUSS y JORDAN
 
     private void switchRow(int source, int destiny){
         Imaginary[] s = this.matrix[source].clone();
@@ -196,6 +220,10 @@ public class Matrix{
         }
     }
 
+    /**
+     * Reduce la matriz a su forma triangular
+     * @return Matriz resultado de la operación
+     */
     public Matrix gauss(){
         int diagonal = Math.min(this.rows, this.cols);
         Matrix result = this.clone();
@@ -228,6 +256,10 @@ public class Matrix{
         return result;
     }
 
+    /**
+     * Reduce la matriz a una diagonal, realizando el método de gauss jordan
+     * @return Matriz resultado de la operación
+     */
     public Matrix gaussJordan(){
         int diagonal = Math.min(this.rows, this.cols);
         Matrix result = this.gauss();
@@ -248,17 +280,31 @@ public class Matrix{
     }
 
 
-    //FUNCTIONALITY
+        //FUNCTIONALITY
 
+    /**
+     * Verifica si dos matrices pueden ser sumadas entre sí
+     * @param m Segunda matriz
+     * @return Comprobación de la compatibilidad
+     */
     public boolean canSum(Matrix m){
         if(m == null) return false;
         return (this.rows == m.rows) && (this.cols == m.cols);
     }
 
+    /**
+     * Verifica si dos matrices pueden ser multiplicadas entre sí
+     * @param m Segunda matriz
+     * @return Comprobación de la compatibilidad
+     */
     public boolean canMultiply(Matrix m){
         return (this.cols == m.rows);
     }
 
+    /**
+     * Rellena una matriz iniciando por las coordenadas 0,0
+     * @param numbers Array o grupo de números
+     */
     public void fill(Imaginary... numbers){
         for (int i = 0; i < this.rows; i++) {
             for (int j = 0; j < this.cols; j++) {
@@ -268,10 +314,20 @@ public class Matrix{
         }
     }
 
+    /**
+     * Transforma la matriz a un único array
+     * @return Array que contiene todos los elementos de la matriz
+     */
     public Imaginary[] toArray(){
         return this.toArray(this.rows, this.cols);
     }
 
+    /**
+     * Transforma la matriz a un array limitando la cantidad de filas y columas deseada
+     * @param rows Número de filas a transformar
+     * @param cols Número de columnas a trasformar
+     * @return Array que contiene los elementos especificados
+     */
     public Imaginary[] toArray(int rows, int cols){
         Imaginary[] result = new Imaginary[(rows) * (cols)];
         for (int i = 0; i < rows; i++) {
@@ -282,6 +338,10 @@ public class Matrix{
         return result;
     }
 
+    /**
+     * Transsforma una amtriz a un string
+     * @return String formateado para parecer una matriz
+     */
     @Override
     public String toString() {
         String s = "";
@@ -293,6 +353,10 @@ public class Matrix{
         return s;
     }
 
+    /**
+     * Permite duplicar una matriz como un nuevo objeto
+     * @return Matiz con los mismos elementos de la original
+     */
     @Override
     public Matrix clone() {
         Matrix clone = new Matrix(this.rows, this.cols);
@@ -303,6 +367,11 @@ public class Matrix{
         return clone;
     }
 
+    /**
+     * Verifica si dos matrices son iguales tanto en atributos como en elementos
+     * @param obj Objeto a comparar
+     * @return Resultado de la comparación
+     */
     @Override
     public boolean equals(Object obj) {
         if(!(obj instanceof Matrix)) return false;
