@@ -2,47 +2,105 @@ package Matrix;
 
 import Expressions.*;
 
-
+/**
+ * Clase dedicada a la creación y manejo de operaciones generales dentro de las matrices
+ */
 public class Matrix{
 
+    /**
+     * Matriz encargada del guardado de datos
+     */
     protected final Imaginary[][] matrix;
+
+    /**
+     * Número de filas
+     */
     protected final int rows;
+
+    /**
+     * Número de columnas
+     */
     protected final int cols;
 
+    /**
+     * Tamaño mínimo de la matriz
+     */
     public static int MIN_SIZE = 1;
+
+    /**
+     * Tamaño por defecto de la matriz
+     */
     protected static int DEFAULT_SIZE = 3;
 
-    //CONSTRUCTORES
+        //CONSTRUCTORES
+
+    /**
+     * Crea una matriz vacía de 3x3
+     */
     public Matrix(){
         this(DEFAULT_SIZE);
     }
 
+    /**
+     * Crea una matriz vacia cuadrada de tamaño n
+     * @param size Tamaño de la matriz
+     */
     public Matrix(int size){
         this(size, size);
     }
 
+    /**
+     * Crea una matriz rectagular
+     * @param rows Cantidad de filas
+     * @param cols Cantidad de columnas
+     */
     public Matrix(int rows, int cols){
         this.rows = Math.max(MIN_SIZE, rows);
         this.cols = Math.max(MIN_SIZE, cols);
         this.matrix = new Imaginary[this.rows][this.cols];
     }
 
-    // GETTERS AND SETTERS
+        // GETTERS AND SETTERS
+
+    /**
+     * Regresa la cantidad de filas de la matriz
+     * @return Entero igual al atributo rows
+     */
     public int getRows() {
         return this.rows;
     }
 
+    /**
+     * Regresa la cantidad de columnas de la matriz
+     * @return Entero igual al atributo cols
+     */
     public int getCols() {
         return this.cols;
     }
 
+    /**
+     * Obtiene el tamñano de la matriz
+     * @return Regresa un string de la forma "rows x cols"
+     */
     public String getSize() { return this.rows + " x " + this.cols; }
 
+    /**
+     * Obtiene un elemento deseado dentro de la matriz
+     * @param rows Posición dentro de las filas
+     * @param cols Posición dentro de las columnas
+     * @return Regresa el imaginario en la posición proporcionada
+     */
     public Imaginary get(int rows, int cols){
         if(rows < 0 || rows >= this.rows || cols < 0 || cols >= this.cols) return null;
         return this.matrix[rows][cols];
     }
 
+    /**
+     * Declara 
+     * @param rows
+     * @param cols
+     * @param number
+     */
     public void set(int rows, int cols, Imaginary number){
         if(rows < 0 || rows >= this.rows || cols < 0 || cols >= this.cols) return;
         this.matrix[rows][cols] = number;
