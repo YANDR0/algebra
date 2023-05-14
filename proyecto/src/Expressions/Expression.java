@@ -15,5 +15,4 @@ public abstract interface Expression {
     @Override
     boolean equals(Object o);
 
-    //Algo de comparar si es mayor o menor
 }
