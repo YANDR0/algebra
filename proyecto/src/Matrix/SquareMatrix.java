@@ -11,7 +11,7 @@ public class SquareMatrix extends Matrix {
     }
 
     public Matrix pow(double exponent) {
-        Matrix result =  this.identity(this.rows);
+        Matrix result =  identity(this.rows);
         for (int i = 0; i < exponent; i++)
             result = (result.multiply(this));
 
@@ -32,12 +32,24 @@ public class SquareMatrix extends Matrix {
     }
 
     public Imaginary determinant(){
-        Imaginary result = this.matrix[0][0];
+        if(this.rows > 3) return null;
+        Imaginary result = new Imaginary();
+        if(this.rows == 3) {
+            result = result.sum(matrix[0][0].multiply(matrix[1][1]).multiply(matrix[2][2]));
+            result = result.sum(matrix[0][1].multiply(matrix[1][2]).multiply(matrix[2][0]));
+            result = result.sum(matrix[0][2].multiply(matrix[1][0]).multiply(matrix[2][1]));
+            result = result.subtract(matrix[2][0].multiply(matrix[1][1]).multiply(matrix[0][2]));
+            result = result.subtract(matrix[2][1].multiply(matrix[1][2]).multiply(matrix[0][0]));
+            result = result.subtract(matrix[2][2].multiply(matrix[1][0]).multiply(matrix[0][1]));
+        }
+        if(this.rows == 2){
+            result = result.sum(matrix[0][0].multiply(matrix[1][1]));
+            result = result.subtract(matrix[1][0].multiply(matrix[0][1]));
+        }
 
-        for(int i = 1; i < this.rows; i++)
-            result = result.multiply(get(i,i));
+        if (this.rows == 1) result = this.matrix[0][0];
 
-        return result;
+        return result == null? null: result;
     }
 
     public static SquareMatrix parseSquare(Matrix m) {

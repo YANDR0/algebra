@@ -96,17 +96,28 @@ public class Test_1 {
         SquareMatrix mc1 = new SquareMatrix(4);
         Real[] numbers4 = Real.toReal(1,1, -1, 1, 2, 5, -3, 3, -1, 5, -2, 3, 2, 11, -4, 4);
         mc1.fill(numbers4);
-        System.out.println("MATRIZ CUADRADA A:\n" + mc1);
+
+        SquareMatrix mc2 = new SquareMatrix();
+        Real[] numbers5 = Real.toReal(5,2,-3,0,8,-1,-4,5,2);
+        mc2.fill(numbers5);
+
+        SquareMatrix mc3 = new SquareMatrix(2);
+        Real[] numbers6 = Real.toReal(5,-3,6,4);
+        mc3.fill(numbers6);
+
+        System.out.println("MATRIZ CUADRADA A:\n" + mc1 + "MATRIZ CUADRADA B:\n" + mc2 + "MATRIZ CUADRADA C:\n" + mc3);
         //POTENCIA
         System.out.println("POTENCIA A^3: \n" + mc1.pow(3));
         //DETERMINANTE
-        //System.out.println("DETERMINANTE A: \n" + mi1.determinant());
+        System.out.println("DETERMINANTE B: \n" + mc2.determinant());
+        System.out.println("DETERMINANTE C: \n" + mc3.determinant() + "\n");
         //IDENTIDAD
         System.out.println("IDENTIDAD 3x3: \n" + SquareMatrix.identity(3));     //OCUPA A GAUSS
 
                 // TODO ----- VECTORES -----  //
 
-        //PRODUCTO PUNTO
+        System.out.println("\tVECTORES\n");
+
         Vector vpp1 = new Vector(3);
         vpp1.set(0,new Real(-3));
         vpp1.set(1,new Real(-2));
@@ -116,6 +127,7 @@ public class Test_1 {
         vpp2.set(0,new Real(6));
         vpp2.set(1,new Real(-10));
         vpp2.set(2, new Real(-1));
+
 
         System.out.println("VECTOR A: " + vpp1 + "VECTOR B: " + vpp2);
         System.out.println("PROD.PUNTO A*B: \n" + vpp1.dot(vpp2));

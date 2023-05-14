@@ -204,8 +204,7 @@ public class Matrix{
     public void fill(Imaginary... numbers){
         for (int i = 0; i < this.rows; i++) {
             for (int j = 0; j < this.cols; j++) {
-                if(i * j + j >= numbers.length)
-                    return;
+                if(i * this.cols + j >= numbers.length) return;
                 this.set(i,j, numbers[i*this.cols+j]);
             }
         }
