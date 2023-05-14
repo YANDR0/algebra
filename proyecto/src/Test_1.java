@@ -48,6 +48,13 @@ public class Test_1 {
         Imaginary ie1 = new Imaginary(-4,6);
         System.out.println("EXPONENCIAL: \t" + ie1 + "E = "+ ie1.toExponential());
 
+        //RAIZ
+        Imaginary ro = new Imaginary(-2, 2);
+        Imaginary[] list = ro.root(3);
+        System.out.println("RAIZ: \t" + ro + "^1/3");
+        for(Imaginary i: list)
+            System.out.println(i);
+
                 // TODO ----- MATRICES -----  //
 
         System.out.println("\n\tMATRICES");

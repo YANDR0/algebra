@@ -107,6 +107,19 @@ public class Imaginary implements Expression{
         return base;
     }
 
+    public Imaginary[] root(int r){
+        Imaginary[] results = new Imaginary[r];
+        double angle = this.angle();
+        double module = Math.pow(this.module(),1.0/r);
+
+        for(int i = 0; i< r; i++){
+            double argument = (angle + 2* Math.PI * i)/r;
+            results[i] = new Imaginary(Math.cos(argument) * module, Math.sin(argument) * module);
+        }
+
+        return results;
+    }
+
     public Imaginary conjugated(){
         return new Imaginary(this.realPart, -1 * this.imaginaryPart );
     }
