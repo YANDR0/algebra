@@ -1,16 +1,17 @@
 package Expressions;
 
-public abstract interface Expression {
+public abstract interface Expression<T extends Expression> {
 
-    Expression sum(Expression e);
-    Expression subtract(Expression e);
-    Expression multiply(Expression e);
-    Expression divide(Expression e);
+
+    T sum(T e);
+    T subtract(T e);
+    T multiply(T e);
+    T divide(T e);
 
     @Override
     String toString();
 
-    Expression clone();
+    T clone();
 
     @Override
     boolean equals(Object o);

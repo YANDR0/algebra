@@ -9,7 +9,6 @@ public class Real extends Imaginary{
         this.realPart = n;
     }
 
-
     public double toNumber(){
         return this.realPart;
     }

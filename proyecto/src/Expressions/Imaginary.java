@@ -2,7 +2,7 @@
 package Expressions;
 import java.text.DecimalFormat;
 
-public class Imaginary implements Expression{
+public class Imaginary implements Expression<Imaginary>{
 
     protected double realPart = 0;
     protected double imaginaryPart = 0;
@@ -51,47 +51,35 @@ public class Imaginary implements Expression{
 
     //OPERATIONS
 
-    public Imaginary sum(Expression n){
-        if(!(n instanceof Imaginary)) return null;
-
-        Imaginary i = (Imaginary) n;
+    public Imaginary sum(Imaginary n){
         Imaginary num = new Imaginary();
-        num.realPart = this.realPart +  i.realPart;
-        num.imaginaryPart = this.imaginaryPart + i.imaginaryPart;
+        num.realPart = this.realPart +  n.realPart;
+        num.imaginaryPart = this.imaginaryPart + n.imaginaryPart;
 
         return num;
     }
 
-    public Imaginary subtract(Expression n){
-        if(!(n instanceof Imaginary)) return null;
-
-        Imaginary i = (Imaginary) n;
+    public Imaginary subtract(Imaginary n){
         Imaginary num = new Imaginary();
-        num.realPart = this.realPart -  i.realPart;
-        num.imaginaryPart = this.imaginaryPart - i.imaginaryPart;
+        num.realPart = this.realPart -  n.realPart;
+        num.imaginaryPart = this.imaginaryPart - n.imaginaryPart;
 
         return num;
     }
 
-    public Imaginary multiply(Expression n){
-        if(!(n instanceof Imaginary)) return null;
-
-        Imaginary i = (Imaginary) n;
+    public Imaginary multiply(Imaginary n){
         Imaginary num = new Imaginary();
-        num.realPart = (this.realPart *  i.realPart) - (this.imaginaryPart * i.imaginaryPart);
-        num.imaginaryPart = (this.realPart * i.imaginaryPart) + (this.imaginaryPart * i.realPart);
+        num.realPart = (this.realPart *  n.realPart) - (this.imaginaryPart * n.imaginaryPart);
+        num.imaginaryPart = (this.realPart * n.imaginaryPart) + (this.imaginaryPart * n.realPart);
 
         return num;
     }
 
-    public Imaginary divide(Expression n){
-        if(!(n instanceof Imaginary)) return null;
+    public Imaginary divide(Imaginary n){
+        if(n.realPart == 0 && n.imaginaryPart == 0) return null;
 
-        Imaginary i = (Imaginary) n;
-        if(i.realPart == 0 && i.imaginaryPart == 0) return null;
-
-        Imaginary number = this.multiply(i.conjugated());
-        double den = (i.realPart * i.realPart) + (i.imaginaryPart * i.imaginaryPart);
+        Imaginary number = this.multiply(n.conjugated());
+        double den = (n.realPart * n.realPart) + (n.imaginaryPart * n.imaginaryPart);
         number.realPart = number.realPart / den;
         number.imaginaryPart = number.imaginaryPart/ den;
 

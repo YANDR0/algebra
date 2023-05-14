@@ -38,15 +38,14 @@ public class Matrix{
 
     public String getSize() { return this.rows + " x " + this.cols; }
 
-    public Expression get(int rows, int cols){
+    public Imaginary get(int rows, int cols){
         if(rows < 0 || rows >= this.rows || cols < 0 || cols >= this.cols) return null;
         return this.matrix[rows][cols];
     }
 
-    public int set(int rows, int cols, Imaginary number){
-        if(rows < 0 || rows >= this.rows || cols < 0 || cols >= this.cols) return 1;
+    public void set(int rows, int cols, Imaginary number){
+        if(rows < 0 || rows >= this.rows || cols < 0 || cols >= this.cols) return;
         this.matrix[rows][cols] = number;
-        return 0;
     }
 
     // OPERATIONS
@@ -58,7 +57,7 @@ public class Matrix{
 
         for(int i = 0; i < this.rows; i++)
             for(int j = 0; j < this.cols; j++)
-                result.set(i, j, (Imaginary)(this.get(i,j).sum(m.get(i,j))));
+                result.set(i, j, (this.get(i,j).sum(m.get(i,j))));
 
         return result;
     }
@@ -70,7 +69,7 @@ public class Matrix{
 
         for(int i = 0; i < this.rows; i++)
             for(int j = 0; j < this.cols; j++)
-                result.set(i, j, (Imaginary)(this.get(i,j).subtract(m.get(i,j))));
+                result.set(i, j, (this.get(i,j).subtract(m.get(i,j))));
 
         return result;
     }
@@ -194,6 +193,7 @@ public class Matrix{
     //FUNCTIONALITY
 
     public boolean canSum(Matrix m){
+        if(m == null) return false;
         return (this.rows == m.rows) && (this.cols == m.cols);
     }
 
@@ -227,8 +227,8 @@ public class Matrix{
     @Override
     public String toString() {
         String s = "";
-        for(Expression[] curr: this.matrix){
-            for (Expression e : curr)
+        for(Imaginary[] curr: this.matrix){
+            for (Imaginary e : curr)
                 s += e != null? e.toString() + "  " : "-  ";
             s += "\n";
         }
